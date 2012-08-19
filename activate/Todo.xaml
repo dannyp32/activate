@@ -1,6 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
     x:Class="activate.Todo"
-    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,6 +13,8 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
     shell:SystemTray.IsVisible="False">
+
+
 
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
@@ -35,6 +36,10 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+
+
+
+
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="CategoryListBoxItemTemplate">
@@ -119,7 +124,7 @@
             </ListBox>
             -->
 
-            <ScrollViewer Margin="0, 592, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+            <ScrollViewer Margin="0, 580, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
                 <StackPanel  Background="Transparent" Orientation="Horizontal" >
 
                     <Image Height="92" Width="120" MouseLeftButtonUp="weather_MouseLeftButtonUp" Source="images/menu1.png"></Image>

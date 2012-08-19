@@ -1,6 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
     x:Class="activate.MainPage"
-    xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,6 +13,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
+
 
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
@@ -35,6 +35,8 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
+
+
 
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -91,7 +93,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <ScrollViewer Margin="0, 624, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+            <ScrollViewer Margin="0, 622, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
                 <StackPanel  Background="Transparent" Orientation="Horizontal" >
 
                     <Image Height="92" Width="120" MouseLeftButtonUp="Image_MouseLeftButtonDown" Source="images/pressed1.png"></Image>

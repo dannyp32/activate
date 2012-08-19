@@ -1,12 +1,10 @@
-﻿<xapCache source="C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\activate.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="8/18/2012 11:27:29 PM">
+﻿<xapCache source="C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\activate.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="8/18/2012 11:59:00 PM">
   <file source="C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="8/18/2012 11:07:34 PM" />
   <file source="C:\Users\dpino\Documents\GitHub\activate\activate\Background.png" archivePath="Background.png" lastWriteTime="8/18/2012 10:37:04 PM" />
   <file source="C:\Users\dpino\Documents\GitHub\activate\activate\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="8/18/2012 10:37:04 PM" />
-  <file source="C:\Users\dpino\Documents\GitHub\activate\activate\obj\Debug\activate.dll" archivePath="activate.dll" lastWriteTime="8/18/2012 11:27:28 PM" />
-  <file source="C:\Users\dpino\Documents\GitHub\activate\activate\Refrences\Coding4Fun.Phone.Controls.dll" archivePath="Coding4Fun.Phone.Controls.dll" lastWriteTime="8/14/2012 3:45:25 AM" />
-  <file source="C:\Users\dpino\Documents\GitHub\activate\activate\Refrences\Coding4Fun.Phone.Controls.Toolkit.dll" archivePath="Coding4Fun.Phone.Controls.Toolkit.dll" lastWriteTime="8/14/2012 3:45:25 AM" />
-  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="9/15/2011 3:36:26 PM" />
+  <file source="C:\Users\dpino\Documents\GitHub\activate\activate\obj\Debug\activate.dll" archivePath="activate.dll" lastWriteTime="8/18/2012 11:59:00 PM" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Toolkit\Oct11\Bin\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="10/6/2011 11:33:14 AM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="9/15/2011 3:36:26 PM" />
   <file source="C:\Users\dpino\Documents\GitHub\activate\activate\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="8/18/2012 10:37:04 PM" />
-  <file source="C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="8/18/2012 11:27:29 PM" />
+  <file source="C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="8/18/2012 11:54:53 PM" />
 </xapCache>
