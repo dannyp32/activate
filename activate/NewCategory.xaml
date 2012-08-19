@@ -1,0 +1,43 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="activate.NewCategory"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#e1e4e4" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0">
+            <TextBlock x:Name="PageTitle" Text="activate" Margin="32, 0, 0, 0" FontFamily="Segoe WP Light" Foreground="#2e3031" FontSize="64" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel  Margin="12,0,12,0">
+                <TextBlock Margin="10, 32, 0, 12" Text="Category Name" FontFamily="Segoe WP Light" FontSize="36" Foreground="#0cbbed"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="CategoryField" Width="372" InputScope="Text" FontFamily="Segoe WP" FontSize="28" BorderBrush="White" BorderThickness="1" />
+                    <Button Width="76" Height="72" Click="Button_Click" BorderThickness="0" Background="#0cbbed" Margin="-24, 0, 0, 0">
+                        <TextBlock Text="+"></TextBlock>
+                    </Button>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

@@ -12,11 +12,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using activate.Model;
+using activate.ViewModel;
 
 namespace activate
 {
     public partial class App : Application
     {
+        private static ToDoViewModel viewModel;
+        public static ToDoViewModel ViewModel
+        {
+            get { return viewModel; }
+        }
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -56,6 +63,34 @@ namespace activate
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+
+            // Specify the local database connection string.
+            string DBConnectionString = "Data Source=isostore:/ToDo.sdf";
+
+            // Create the database if it does not exist.
+            using (ToDoDataContext db = new ToDoDataContext(DBConnectionString))
+            {
+                if (db.DatabaseExists() == false)
+                {
+                    // Create the local database.
+                    db.CreateDatabase();
+
+                    // Prepopulate the categories.
+                    db.Categories.InsertOnSubmit(new ToDoCategory { Name = "Home" });
+                    db.Categories.InsertOnSubmit(new ToDoCategory { Name = "Work" });
+                    db.Categories.InsertOnSubmit(new ToDoCategory { Name = "School" });
+
+                    // Save categories to the database.
+                    db.SubmitChanges();
+                }
+            }
+
+            // Create the ViewModel object.
+            viewModel = new ToDoViewModel(DBConnectionString);
+
+            // Query the local database and load observable collections.
+            viewModel.LoadCollectionsFromDatabase();
 
         }
 

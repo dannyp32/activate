@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="activate.MainPage"
+    x:Class="activate.Todo"
     xmlns:Controls="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,11 +8,11 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
     shell:SystemTray.IsVisible="False">
 
     <toolkit:TransitionService.NavigationInTransition>
@@ -36,66 +36,94 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
 
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="CategoryListBoxItemTemplate">
+            <StackPanel Height="132">
+                <Border BorderThickness="1" BorderBrush="#FF9BAAAD">
+                    <StackPanel Height="108" Width="410" Orientation="Horizontal">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="images/list1.png"></ImageBrush>
+                        </StackPanel.Background>
+                        <!--
+                    <StackPanel VerticalAlignment="Center" Margin="0, -8, 0, 0">
+                        <TextBlock Margin="16, -8, 0, 0"  Text="{Binding Path=MonthCreated}" FontFamily="Segoe WP Black" FontSize="48" Foreground="#FF19BFF2"></TextBlock>
+                        <TextBlock Margin="16, -8, 0, 0" Text="{Binding Path=DayCreated}" FontFamily="Segoe WP Black" FontSize="24" Foreground="#FF19BFF2"></TextBlock>
+                    </StackPanel>
+                        -->
+                        <TextBlock TextTrimming="WordEllipsis" Width="370" Margin="16, -8, 0, 0" VerticalAlignment="Center" Text="{Binding Path=Name}" FontFamily="Segoe WP Light" FontSize="40" Foreground="#FF4A5B62"></TextBlock>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Background="#e1e4e4" >
 
-        <Grid.Background>
-            <ImageBrush x:Name="bg" ImageSource="images\bg7.png"></ImageBrush>
-        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0">
+        <StackPanel x:Name="TitlePanel" Orientation="Horizontal" Grid.Row="0" Margin="0">
             <TextBlock x:Name="PageTitle" Text="activate" Margin="32, 0, 0, 0" FontFamily="Segoe WP Light" Foreground="#2e3031" FontSize="64" />
+            <Button Margin="132,-12,0,0" BorderThickness="0" Background="Transparent" Content="+" FontSize="56" Foreground="#FF4A5B62" Click="actionClick"></Button>
         </StackPanel>
+
 
         <!--0da4d0   00c0ff   ff6600-->
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, -24, 0, 432">
-                <TextBlock x:Name="weather" Text="" Foreground="#0cbbed" FontSize="232"  FontWeight="Bold" FontFamily="Segoe WP" ></TextBlock>
-                <TextBlock x:Name="dot" Margin="0, 44, 0, 0" Text="°" Foreground="#0cbbed" FontSize="96"  FontWeight="Bold" FontFamily="Segoe WP" ></TextBlock>
-            </StackPanel>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0, 32, 0, 0">
 
-            <StackPanel Margin="0, 248, 0, 300" >
-                <TextBlock x:Name="currentCity" HorizontalAlignment="Center" Text="" Foreground="#434849" FontSize="56"  FontFamily="Segoe WP Light" ></TextBlock>
-                <TextBlock x:Name="currentDay" HorizontalAlignment="Center" Text="" Foreground="#757e80" FontSize="32"  FontFamily="Segoe WP" ></TextBlock>
+            <ListBox 
+                x:Name="CategoriesListBox" 
+                ItemsSource="{Binding CategoriesList}" 
+                Margin="0, 0, 0, 112"
+                Width="420"
+                ItemTemplate="{StaticResource CategoryListBoxItemTemplate}">
+            </ListBox>
 
-                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-            </StackPanel>
-
-            <ListBox Name="upcomingForecast" Margin="0, 400, 0, 80" Width="480" >
+            <!--
+            
+            <ScrollViewer>
+            <ListBox Name="categorylist4" Margin="0, 0, 0, 160" Width="410" ItemsSource="CategoryItems">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="0, 0, 0, 1" BorderBrush="#d0d7d7">
-
-                            <Border BorderThickness="0, 0, 0, 1" BorderBrush="#8a9494" >
-
-                                <StackPanel Orientation="Horizontal" Height="64" Width="480">
-                                    <TextBlock Text="{Binding Path=day_of_week}" Margin="32, 0, 0, 0" Width="100" VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#434849"></TextBlock>
-                                    <Image VerticalAlignment="Center" Width="64" Source="{Binding Path=condition}"></Image>
-                                    <TextBlock Text="{Binding Path=high}" Width="100"  VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#434849"></TextBlock>
-
-                                    <!--     <TextBlock Text=" / " VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#434849"></TextBlock>  -->
-                                    <TextBlock Text="{Binding Path=low}" Width="100"   VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#646c6d"></TextBlock>
-
-                                </StackPanel>
-                            </Border>
-                        </Border>
+                        
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            </ScrollViewer>
+            
+            -->
 
-            <ScrollViewer Margin="0, 624, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+            <!--
+            <ListBox>
+                <ListBoxItem Height="110" Width="410" HorizontalAlignment="Center">
+                    <ListBoxItem.Background>
+                        <ImageBrush ImageSource="images\list1.png"></ImageBrush>
+                    </ListBoxItem.Background>
+                    
+                    <Border BorderThickness="1" BorderBrush="#b4c4c7">                    
+                    <StackPanel Height="108" Width="410" Orientation="Horizontal" >
+                            <StackPanel VerticalAlignment="Center" Margin="0, -8, 0, 0">
+                                <TextBlock Margin="16, -8, 0, 0"  Text="SEP" FontFamily="Segoe WP Black" FontSize="56" Foreground="#FF25B0DB"></TextBlock>
+                                <TextBlock Margin="16, -8, 0, 0" Text="30, 2012" FontFamily="Segoe WP Black" FontSize="24" Foreground="#FF25B0DB"></TextBlock>
+                            </StackPanel>
+                            <TextBlock TextTrimming="WordEllipsis" Width="260" Margin="16, -8, 0, 0" VerticalAlignment="Center" Text="Shopping List" FontFamily="Segoe WP" FontSize="32" Foreground="#FF4A5B62"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </ListBoxItem>
+            </ListBox>
+            -->
+
+            <ScrollViewer Margin="0, 592, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
                 <StackPanel  Background="Transparent" Orientation="Horizontal" >
 
-                    <Image Height="92" Width="120" MouseLeftButtonUp="Image_MouseLeftButtonDown" Source="images/pressed1.png"></Image>
-                    <Image Height="92" Width="120" MouseLeftButtonUp="todopage_MouseLeftButtonUp" Source="images/menu2.png"></Image>
+                    <Image Height="92" Width="120" MouseLeftButtonUp="weather_MouseLeftButtonUp" Source="images/menu1.png"></Image>
+                    <Image Height="92" Width="120"  Source="images/pressed2.png"></Image>
                     <Image Height="92" Width="120" Source="images/menu3.png"></Image>
                     <Image Height="92" Width="120" Source="images/menu4.png"></Image>
                     <!--
