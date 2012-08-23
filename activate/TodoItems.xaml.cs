@@ -21,8 +21,8 @@ namespace activate
         public TodoItems()
         {
             InitializeComponent();
-            loaditems();
             this.DataContext = App.ViewModel;
+            loaditems();
         }
 
         private void actionClick(object sender, RoutedEventArgs e)
@@ -32,7 +32,7 @@ namespace activate
 
         private void weatherClick(object sender, MouseButtonEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -51,7 +51,7 @@ namespace activate
             IList<ToDoItem> itemsList = null;
             using (ToDoDataContext TodoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
             {
-                IQueryable<ToDoItem> query = from item in TodoDB.Items where item._categoryId == TodoDB.activeCategory.Id select item;
+                IQueryable<ToDoItem> query = from item in TodoDB.Items select item;
                 itemsList = query.ToList();
             }
             return itemsList;

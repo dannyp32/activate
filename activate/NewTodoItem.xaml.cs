@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using activate.Model;
+using activate.ViewModel;
 using System.Windows.Navigation;
 
 namespace activate
@@ -34,12 +35,18 @@ namespace activate
                 MessageBox.Show("Please enter a new task.");
                 return;
             }
-
+            if (App.ViewModel.ActiveToDoCateg == null)
+            {
+                MessageBox.Show("The current category is null");
+                return;
+            }
             using (ToDoDataContext ToDoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
             {
+                
                 ToDoItem newItem = new ToDoItem
                 {
                     ItemName = TaskField.Text,
+                    _categoryId = App.ViewModel.ActiveToDoCateg.Id,
                     IsComplete = false
                 };
                 ToDoDB.Items.InsertOnSubmit(newItem);

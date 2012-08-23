@@ -22,6 +22,17 @@ namespace activate.ViewModel
             toDoDB = new ToDoDataContext(toDoDBConnectionString);
         }
 
+        private ToDoCategory _activeToDoCateg;
+        public ToDoCategory ActiveToDoCateg
+        {
+            get { return _activeToDoCateg; }
+            set
+            {
+                _activeToDoCateg = value;
+                NotifyPropertyChanged("ActiveToDoCateg");
+            }
+        }
+
         // All to-do items.
         private ObservableCollection<ToDoItem> _allToDoItems;
         public ObservableCollection<ToDoItem> AllToDoItems
