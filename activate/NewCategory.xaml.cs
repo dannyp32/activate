@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using activate.Model;
 using activate.ViewModel;
+using System.Windows.Navigation;
 
 namespace activate
 {
@@ -22,24 +23,53 @@ namespace activate
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            App.ViewModel.LoadCollectionsFromDatabase();
+        }
+
+        private void addCategoryClick(object sender, RoutedEventArgs e)
+        {
+            if (CategoryField.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter a name for your new category.");
+                return;
+            }
             using (ToDoDataContext ToDoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
             {
                 ToDoCategory newCategory = new ToDoCategory
                 {
-                    Name = CategoryField.Text,
-                    DayCreated = DateTime.Now.Day.ToString() + ", " + DateTime.Now.Year.ToString(),
-                    MonthCreated = HelperMethods.getShortMonth(DateTime.Now.Month)
+                    Name = CategoryField.Text
                 };
+
+                //check if it already exists by iterating through all
+                IList<ToDoCategory> categories = this.GetCategories();
+                foreach (ToDoCategory todoCateg in categories)
+                {
+                    if (todoCateg.Name.Equals(newCategory.Name))
+                    {
+                        MessageBox.Show("The category already exists");
+                        return;
+                    }
+                }
+
                 ToDoDB.Categories.InsertOnSubmit(newCategory);
                 ToDoDB.SubmitChanges();
-                MessageBox.Show("Your new category was added successfully!");
-                System.Console.WriteLine(newCategory.Name);
-                System.Console.WriteLine(newCategory.DayCreated);
-                System.Console.WriteLine(newCategory.MonthCreated);
+                MessageBox.Show("Your new category has been added successfully!");
                 this.NavigationService.Navigate(new Uri("/Todo.xaml", UriKind.Relative));
             }
         }
+
+        public IList<ToDoCategory> GetCategories()
+        {
+            IList<ToDoCategory> categoryList = null;
+            using (ToDoDataContext context = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
+            {
+                IQueryable<ToDoCategory> query = from c in context.Categories select c;
+                categoryList = query.ToList();
+            }
+            return categoryList;
+        }
+
     }
 }

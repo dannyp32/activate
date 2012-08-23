@@ -5,6 +5,8 @@ using System.Linq;
 
 // Directive for the data model.
 using activate.Model;
+using System.Windows;
+using System;
 
 
 namespace activate.ViewModel
@@ -29,42 +31,6 @@ namespace activate.ViewModel
             {
                 _allToDoItems = value;
                 NotifyPropertyChanged("AllToDoItems");
-            }
-        }
-
-        // To-do items associated with the home category.
-        private ObservableCollection<ToDoItem> _homeToDoItems;
-        public ObservableCollection<ToDoItem> HomeToDoItems
-        {
-            get { return _homeToDoItems; }
-            set
-            {
-                _homeToDoItems = value;
-                NotifyPropertyChanged("HomeToDoItems");
-            }
-        }
-
-        // To-do items associated with the work category.
-        private ObservableCollection<ToDoItem> _workToDoItems;
-        public ObservableCollection<ToDoItem> WorkToDoItems
-        {
-            get { return _workToDoItems; }
-            set
-            {
-                _workToDoItems = value;
-                NotifyPropertyChanged("WorkToDoItems");
-            }
-        }
-
-        // To-do items associated with the hobbies category.
-        private ObservableCollection<ToDoItem> _hobbiesToDoItems;
-        public ObservableCollection<ToDoItem> HobbiesToDoItems
-        {
-            get { return _hobbiesToDoItems; }
-            set
-            {
-                _hobbiesToDoItems = value;
-                NotifyPropertyChanged("HobbiesToDoItems");
             }
         }
 
@@ -101,26 +67,6 @@ namespace activate.ViewModel
             var toDoCategoriesInDB = from ToDoCategory category in toDoDB.Categories
                                      select category;
 
-
-            // Query the database and load all associated items to their respective collections.
-            foreach (ToDoCategory category in toDoCategoriesInDB)
-            {
-                switch (category.Name)
-                {
-                    case "Home":
-                        HomeToDoItems = new ObservableCollection<ToDoItem>(category.ToDos);
-                        break;
-                    case "Work":
-                        WorkToDoItems = new ObservableCollection<ToDoItem>(category.ToDos);
-                        break;
-                    case "Hobbies":
-                        HobbiesToDoItems = new ObservableCollection<ToDoItem>(category.ToDos);
-                        break;
-                    default:
-                        break;
-                }
-            }
-
             // Load a list of all categories.
             CategoriesList = toDoDB.Categories.ToList();
 
@@ -140,21 +86,32 @@ namespace activate.ViewModel
             // Add a to-do item to the "all" observable collection.
             AllToDoItems.Add(newToDoItem);
 
-            // Add a to-do item to the appropriate filtered collection.
-            switch (newToDoItem.Category.Name)
+            /*
+            using (ToDoDataContext ToDoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
             {
-                case "Home":
-                    HomeToDoItems.Add(newToDoItem);
-                    break;
-                case "Work":
-                    WorkToDoItems.Add(newToDoItem);
-                    break;
-                case "Hobbies":
-                    HobbiesToDoItems.Add(newToDoItem);
-                    break;
-                default:
-                    break;
+                ToDoCategory newCategory = new ToDoCategory
+                {
+                    Name = CategoryField.Text
+                };
+
+                //check if it already exists by iterating through all
+                IList<ToDoCategory> categories = this.GetCategories();
+                foreach (ToDoCategory todoCateg in categories)
+                {
+                    if (todoCateg.Name.Equals(newCategory.Name))
+                    {
+                        MessageBox.Show("The category already exists");
+                        return;
+                    }
+                }
+
+                ToDoDB.Categories.InsertOnSubmit(newCategory);
+                ToDoDB.SubmitChanges();
+                MessageBox.Show("Your new category has been added successfully!");
+                this.NavigationService.Navigate(new Uri("/Todo.xaml", UriKind.Relative));
             }
+             * */
+
         }
 
         // Remove a to-do task item from the database and collections.
@@ -166,22 +123,6 @@ namespace activate.ViewModel
 
             // Remove the to-do item from the data context.
             toDoDB.Items.DeleteOnSubmit(toDoForDelete);
-
-            // Remove the to-do item from the appropriate category.   
-            switch (toDoForDelete.Category.Name)
-            {
-                case "Home":
-                    HomeToDoItems.Remove(toDoForDelete);
-                    break;
-                case "Work":
-                    WorkToDoItems.Remove(toDoForDelete);
-                    break;
-                case "Hobbies":
-                    HobbiesToDoItems.Remove(toDoForDelete);
-                    break;
-                default:
-                    break;
-            }
 
             // Save changes to the database.
             toDoDB.SubmitChanges();

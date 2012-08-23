@@ -18,3 +18,5 @@ C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\Microsoft.Phone.Cont
 C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\Microsoft.Phone.Controls.Toolkit.pdb
 C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\Microsoft.Phone.Controls.Toolkit.xml
 C:\Users\dpino\Documents\GitHub\activate\activate\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\dpino\Documents\GitHub\activate\activate\obj\Debug\NewTodoItem.g.i.cs
+C:\Users\dpino\Documents\GitHub\activate\activate\obj\Debug\TodoItems.g.i.cs

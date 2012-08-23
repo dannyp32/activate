@@ -7,10 +7,13 @@ namespace activate.Model
 {
     public class ToDoDataContext : DataContext
     {
+
         // Pass the connection string to the base class.
         public ToDoDataContext(string connectionString)
             : base(connectionString)
         { }
+
+        public ToDoCategory activeCategory;
 
         // Specify a table for the to-do items.
         public Table<ToDoItem> Items;
@@ -90,7 +93,7 @@ namespace activate.Model
         private EntityRef<ToDoCategory> _category;
 
         // Association, to describe the relationship between this key and that "storage" table
-        [Association(Storage = "_category", ThisKey = "_categoryId", OtherKey = "Id", IsForeignKey = true)]
+        [Association(Storage = "_category", ThisKey = "_categoryId", OtherKey = "Id")]
         public ToDoCategory Category
         {
             get { return _category.Entity; }
@@ -172,34 +175,6 @@ namespace activate.Model
                 NotifyPropertyChanging("Name");
                 _name = value;
                 NotifyPropertyChanged("Name");
-            }
-        }
-
-        private string _monthCreated;
-
-        [Column]
-        public string MonthCreated
-        {
-            get { return _monthCreated; }
-            set
-            {
-                NotifyPropertyChanging("MonthCreated");
-                _monthCreated = value;
-                NotifyPropertyChanged("MonthCreated");
-            }
-        }
-
-        private string _dayCreated;
-
-        [Column]
-        public string DayCreated
-        {
-            get { return _dayCreated; }
-            set
-            {
-                NotifyPropertyChanging("DayCreated");
-                _dayCreated = value;
-                NotifyPropertyChanged("DayCreated");
             }
         }
 

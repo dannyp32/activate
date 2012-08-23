@@ -71,11 +71,17 @@
     <Compile Include="NewCategory.xaml.cs">
       <DependentUpon>NewCategory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewTodoItem.xaml.cs">
+      <DependentUpon>NewTodoItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Todo.xaml.cs">
       <DependentUpon>Todo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToDoDataContext.cs" />
+    <Compile Include="TodoItems.xaml.cs">
+      <DependentUpon>TodoItems.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToDoViewModel.cs" />
     <Compile Include="WeatherInfo.cs" />
   </ItemGroup>
@@ -92,7 +98,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NewTodoItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Todo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TodoItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

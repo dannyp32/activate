@@ -11,21 +11,24 @@ namespace activate
 {
     public partial class MainPage : PhoneApplicationPage
     {
-
+        private bool loadedWeather;
         // Constructor
         public MainPage()
         {
+            loadedWeather = false;
             InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            loadWeather();
+            if (!loadedWeather)
+            {
+                loadWeather();
+            }
         }
 
         private void loadWeather()
         {
-
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 try
@@ -80,7 +83,7 @@ namespace activate
                 weatherData.low = ((string)item.Element("low").Attribute("data").Value) + "°";
                 upcomingForecast.Items.Add(weatherData);
             }
-
+            loadedWeather = true;
         }
 
         private string getMonthAndDay(int offset)
