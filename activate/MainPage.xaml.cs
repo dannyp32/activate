@@ -21,10 +21,12 @@ namespace activate
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            /*
             if (!loadedWeather)
             {
                 loadWeather();
             }
+             * */
         }
 
         private void loadWeather()

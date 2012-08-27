@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="ToDoViewModel.cs" />
     <Compile Include="WeatherInfo.cs" />
+    <Compile Include="WeatherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -35,7 +35,7 @@ namespace activate
                 MessageBox.Show("Please enter a name for your new category.");
                 return;
             }
-            using (ToDoDataContext ToDoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
+            using (ToDoDataContext ToDoDB = new ToDoDataContext())
             {
                 ToDoCategory newCategory = new ToDoCategory
                 {
@@ -55,15 +55,21 @@ namespace activate
 
                 ToDoDB.Categories.InsertOnSubmit(newCategory);
                 ToDoDB.SubmitChanges();
-                MessageBox.Show("Your new category has been added successfully!");
-                this.NavigationService.Navigate(new Uri("/Todo.xaml", UriKind.Relative));
+                if (NavigationService.CanGoBack)
+                {
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    this.NavigationService.Navigate(new Uri("/Todo.xaml", UriKind.Relative));
+                }
             }
         }
 
         public IList<ToDoCategory> GetCategories()
         {
             IList<ToDoCategory> categoryList = null;
-            using (ToDoDataContext context = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
+            using (ToDoDataContext context = new ToDoDataContext())
             {
                 IQueryable<ToDoCategory> query = from c in context.Categories select c;
                 categoryList = query.ToList();

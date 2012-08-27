@@ -17,19 +17,19 @@ namespace activate.ViewModel
         private ToDoDataContext toDoDB;
 
         // Class constructor, create the data context object.
-        public ToDoViewModel(string toDoDBConnectionString)
+        public ToDoViewModel()
         {
-            toDoDB = new ToDoDataContext(toDoDBConnectionString);
+            toDoDB = new ToDoDataContext();
         }
 
-        private ToDoCategory _activeToDoCateg;
-        public ToDoCategory ActiveToDoCateg
+        private ToDoCategory _activeCategory;
+        public ToDoCategory ActiveCategory
         {
-            get { return _activeToDoCateg; }
+            get { return _activeCategory; }
             set
             {
-                _activeToDoCateg = value;
-                NotifyPropertyChanged("ActiveToDoCateg");
+                _activeCategory = value;
+                NotifyPropertyChanged("ActiveCategory");
             }
         }
 

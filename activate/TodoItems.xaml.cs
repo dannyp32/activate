@@ -21,8 +21,13 @@ namespace activate
         public TodoItems()
         {
             InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
             this.DataContext = App.ViewModel;
             loaditems();
+            base.OnNavigatedTo(e);
         }
 
         private void actionClick(object sender, RoutedEventArgs e)
@@ -43,15 +48,16 @@ namespace activate
 
         private void loaditems()
         {
+            App.ViewModel.AllToDoItems.Clear();
             App.ViewModel.AllToDoItems = new System.Collections.ObjectModel.ObservableCollection<ToDoItem>(getItems());
         }
 
         public IList<ToDoItem> getItems()
         {
-            IList<ToDoItem> itemsList = null;
-            using (ToDoDataContext TodoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
+            IList<ToDoItem> itemsList;
+            using (ToDoDataContext TodoDB = new ToDoDataContext())
             {
-                IQueryable<ToDoItem> query = from item in TodoDB.Items select item;
+                IQueryable<ToDoItem> query = from item in TodoDB.Items where item._categoryId == App.ViewModel.ActiveCategory.Id select item;
                 itemsList = query.ToList();
             }
             return itemsList;

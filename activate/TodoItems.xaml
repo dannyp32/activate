@@ -44,7 +44,7 @@
                     <Border BorderBrush="White">
                         <StackPanel Height="72" Width="480" Orientation="Horizontal" >
                             <Rectangle Width="8" Fill="#0cbbed"></Rectangle>
-                            <TextBlock TextTrimming="WordEllipsis" Width="260" Margin="16, -8, 0, 0" VerticalAlignment="Center" Text="{Binding Path=ItemName}" FontFamily="Segoe WP Light" FontSize="32" Foreground="#FF4A5B62"></TextBlock>
+                            <TextBlock TextTrimming="WordEllipsis" Width="380" Margin="16, -8, 0, 0" VerticalAlignment="Center" Text="{Binding Path=ItemName}" FontFamily="Segoe WP Light" FontSize="32" Foreground="#FF4A5B62"></TextBlock>
                         </StackPanel>
                     </Border>
                 </Border>

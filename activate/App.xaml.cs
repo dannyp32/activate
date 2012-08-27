@@ -64,12 +64,8 @@ namespace activate
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-
-            // Specify the local database connection string.
-            string DBConnectionString = "Data Source=isostore:/ToDo.sdf";
-
             // Create the database if it does not exist.
-            using (ToDoDataContext db = new ToDoDataContext(DBConnectionString))
+            using (ToDoDataContext db = new ToDoDataContext())
             {
                 if (db.DatabaseExists() == false)
                 {
@@ -87,7 +83,7 @@ namespace activate
             }
 
             // Create the ViewModel object.
-            viewModel = new ToDoViewModel(DBConnectionString);
+            viewModel = new ToDoViewModel();
 
             // Query the local database and load observable collections.
             viewModel.LoadCollectionsFromDatabase();

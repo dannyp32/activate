@@ -34,7 +34,16 @@ namespace activate
 
         private void CategoriesListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/TodoItems.xaml", UriKind.Relative));
+            if (CategoriesListBox.SelectedItem == null)
+            {
+                return;
+            }
+
+            var selectedCategory = (ToDoCategory)CategoriesListBox.SelectedItem;
+            App.ViewModel.ActiveCategory = selectedCategory;
+
+            NavigationService.Navigate(new Uri("/TodoItems.xaml", UriKind.Relative));
+            CategoriesListBox.SelectedItem = null;
         }
 
     }

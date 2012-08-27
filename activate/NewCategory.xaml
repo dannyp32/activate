@@ -31,8 +31,8 @@
             <StackPanel  Margin="12,0,12,0">
                 <TextBlock Margin="10, 32, 0, 12" Text="Category Name" FontFamily="Segoe WP Light" FontSize="36" Foreground="#0cbbed"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="CategoryField" Width="372" InputScope="Text" FontFamily="Segoe WP" FontSize="28" BorderBrush="White" BorderThickness="1" />
-                    <Button Width="76" Height="72" Click="addCategoryClick" BorderThickness="0" Background="#0cbbed" Margin="-24, 0, 0, 0">
+                    <TextBox x:Name="CategoryField" Width="372" InputScope="Text" FontFamily="Segoe WP" FontSize="36" BorderBrush="White" BorderThickness="1" />
+                    <Button Width="88" Height="82" Click="addCategoryClick" BorderThickness="0" Background="#0cbbed" Margin="-24, 0, 0, 0">
                         <TextBlock Text="+"></TextBlock>
                     </Button>
                 </StackPanel>
