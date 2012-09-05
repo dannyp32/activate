@@ -27,14 +27,14 @@ namespace activate.ViewModel
         }
 
         // All to-do items.
-        private ObservableCollection<WeatherItem> _weatherItems;
-        public ObservableCollection<WeatherItem> WeatherItems
+        private ObservableCollection<WeatherItem> _weatherList;
+        public ObservableCollection<WeatherItem> WeatherList
         {
-            get { return _weatherItems; }
+            get { return _weatherList; }
             set
             {
-                _weatherItems = value;
-                NotifyPropertyChanged("WeatherItems");
+                _weatherList = value;
+                NotifyPropertyChanged("WeatherList");
             }
         }
 
@@ -50,17 +50,17 @@ namespace activate.ViewModel
         public void LoadCollectionsFromDatabase()
         {
             // Specify the query for all to-do items in the database.
-            var weatherItemsInDB = from WeatherItem weather in weatherDB.Items
+            var weatherItemsInDB = from WeatherItem weather in weatherDB.Forecasts
                                    select weather;
 
             // Query the database and load all to-do items.
-            WeatherItems = new ObservableCollection<WeatherItem>(weatherItemsInDB);
+            WeatherList = new ObservableCollection<WeatherItem>(weatherItemsInDB);
         }
 
 
 
         // Add a to-do item to the database and collections.
-        public void AddToDoItem(WeatherItem newWeatherItem)
+        public void AddWeatherItem(WeatherItem newWeatherItem)
         {
             // Add a to-do item to the data context.
             weatherDB.Forecasts.InsertOnSubmit(newWeatherItem);
@@ -69,7 +69,7 @@ namespace activate.ViewModel
             weatherDB.SubmitChanges();
 
             // Add a to-do item to the "all" observable collection.
-            WeatherItems.Add(newWeatherItem);
+            WeatherList.Add(newWeatherItem);
 
         }
 

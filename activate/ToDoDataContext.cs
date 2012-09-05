@@ -22,7 +22,6 @@ namespace activate.Model
         public Table<ToDoCategory> Categories;
 
         //Weather stuff
-        public string APIKey = "1d97f92c54065816121507";
         public WeatherItem currentWeather;
 
         // Specify a table for the to-do items.
@@ -69,23 +68,24 @@ namespace activate.Model
             }
         }
 
-        // Define completion value: private field, public property, and database column.
-        private string _city;
+        private string _dayOfWeek;
 
         [Column]
-        public string City
+        public string DayOfWeek
         {
-            get { return _city; }
+            get { return _dayOfWeek; }
             set
             {
-                if (_city != value)
+                if (_dayOfWeek != value)
                 {
-                    NotifyPropertyChanging("City");
-                    _city = value;
-                    NotifyPropertyChanged("City");
+                    NotifyPropertyChanging("DayOfWeek");
+                    _dayOfWeek = value;
+                    NotifyPropertyChanged("DayOfWeek");
                 }
             }
         }
+
+        // Define completion value: private field, public property, and database column.
 
         private string _high;
 
@@ -138,6 +138,21 @@ namespace activate.Model
             }
         }
 
+        private string _imageSource;
+        [Column]
+        public string ImageSource
+        {
+            get { return _imageSource; }
+            set
+            {
+                if (_imageSource != value)
+                {
+                    NotifyPropertyChanging("ImageSource");
+                    _imageSource = value;
+                    NotifyPropertyChanged("ImageSource");
+                }
+            }
+        }
 
         // Version column aids update performance.
         [Column(IsVersion = true)]

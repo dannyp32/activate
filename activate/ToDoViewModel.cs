@@ -22,6 +22,17 @@ namespace activate.ViewModel
             toDoDB = new ToDoDataContext();
         }
 
+        private string _woeid;
+        public string WOEID
+        {
+            get { return _woeid; }
+            set
+            {
+                _woeid = value;
+                NotifyPropertyChanged("WOEID");
+            }
+        }
+
         private ToDoCategory _activeCategory;
         public ToDoCategory ActiveCategory
         {

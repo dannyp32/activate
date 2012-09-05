@@ -130,9 +130,9 @@
                 <StackPanel  Background="Transparent" Orientation="Horizontal" >
 
                     <Image Height="92" Width="120" MouseLeftButtonUp="weather_MouseLeftButtonUp" Source="images/menu1.png"></Image>
-                    <Image Height="92" Width="120"  Source="images/pressed2.png"></Image>
-                    <Image Height="92" Width="120" Source="images/menu3.png"></Image>
-                    <Image Height="92" Width="120" Source="images/menu4.png"></Image>
+                    <Image Height="92" Width="120" Source="images/pressed2.png"></Image>
+                    <Image Height="92" Width="120" MouseLeftButtonUp="rss_MouseLeftButtonUp" Source="images/menu3.png"></Image>
+                    <Image Height="92" Width="120" MouseLeftButtonUp="settings_MouseLeftButtonUp" Source="images/menu4.png"></Image>
                     <!--
                     <TextBlock x:Name="weatherpage" Margin="32, -10, 0, 0" Text="weather" FontFamily="Segoe WP Light" Foreground="White" FontSize="48" VerticalAlignment="Center" MouseLeftButtonUp="todopage_MouseLeftButtonUp"></TextBlock>
                     <TextBlock x:Name="todopage" Margin="32, -10, 0, 0" Text="todo" FontFamily="Segoe WP Light" Foreground="White" FontSize="48" VerticalAlignment="Center" MouseLeftButtonUp="todopage_MouseLeftButtonUp"></TextBlock>

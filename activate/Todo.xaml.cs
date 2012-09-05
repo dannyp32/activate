@@ -46,6 +46,15 @@ namespace activate
             CategoriesListBox.SelectedItem = null;
         }
 
+        private void rss_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void settings_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Settings.xaml", UriKind.Relative));
+        }
+
     }
 
 }

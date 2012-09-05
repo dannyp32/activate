@@ -24,6 +24,13 @@ namespace activate
         {
             get { return viewModel; }
         }
+
+        private static WeatherViewModel weatherViewModel;
+        public static WeatherViewModel WeatherViewModel
+        {
+            get { return weatherViewModel; }
+        }
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -77,6 +84,16 @@ namespace activate
                     db.Categories.InsertOnSubmit(new ToDoCategory { Name = "Work" });
                     db.Categories.InsertOnSubmit(new ToDoCategory { Name = "School" });
 
+                    db.Forecasts.InsertOnSubmit(new WeatherItem
+                    {
+                        DayOfWeek = "Mon",
+                        ItemDay = "Sept 4",
+                        Condition = "Mostly Sunny",
+                        High = "105",
+                        Low = "88",
+                        ImageSource = "images/Weather/45.png"
+                    });
+
                     // Save categories to the database.
                     db.SubmitChanges();
                 }
@@ -84,9 +101,11 @@ namespace activate
 
             // Create the ViewModel object.
             viewModel = new ToDoViewModel();
+            weatherViewModel = new WeatherViewModel();
 
             // Query the local database and load observable collections.
             viewModel.LoadCollectionsFromDatabase();
+            weatherViewModel.LoadCollectionsFromDatabase();
 
         }
 
