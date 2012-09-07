@@ -38,21 +38,23 @@
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="ForecastListItemTemplate">
-            <StackPanel Orientation="Horizontal" Margin="0" Width="480" Height="100">
-                <StackPanel Width="190" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=DayOfWeek}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=MonthAndDay}" FontFamily="Segoe WP Light" FontSize="36" Foreground="#545d61"></TextBlock>
-                </StackPanel>
-                <Image Height="100" Width="100" Source="{Binding Path=ImageSource}"></Image>
-                <StackPanel Width="190" VerticalAlignment="Center">
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock Text="↑" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                        <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="{Binding Path=High}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#0da5d0"></TextBlock>
-                        <TextBlock Text="↓" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                        <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="{Binding Path=Low}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#0da5d0"></TextBlock>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0" Width="480" Height="100">
+                    <StackPanel Width="190" VerticalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Path=DayOfWeek}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="32" Foreground="#545d61"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Path=MonthAndDay}" FontFamily="Segoe WP Light" FontSize="32" Foreground="#545d61"></TextBlock>
                     </StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=Condition}" FontFamily="Segoe WP Light" FontSize="24" Foreground="#545d61"></TextBlock>
+                    <Image Height="100" Width="100" Source="{Binding Path=ImageSource}"></Image>
+                    <StackPanel Width="190" VerticalAlignment="Center">
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="↑" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="32" Foreground="#545d61"></TextBlock>
+                            <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="{Binding Path=High}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="32" Foreground="#0da5d0"></TextBlock>
+                            <TextBlock Text="↓" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="32" Foreground="#545d61"></TextBlock>
+                            <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="{Binding Path=Low}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="32" Foreground="#0da5d0"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=Condition}" FontFamily="Segoe WP" FontSize="22" Foreground="#545d61"></TextBlock>
             </StackPanel>
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
