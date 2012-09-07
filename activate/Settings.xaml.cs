@@ -25,6 +25,12 @@ namespace activate
             InitializeSettings();
         }
 
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            InitializeSettings();
+            base.OnNavigatedTo(e);
+        }
+
         private void InitializeSettings()
         {
             if (settings.Contains("WOEID"))

@@ -11,9 +11,14 @@ namespace activate
         public MainPage()
         {
             InitializeComponent();
-            this.DataContext = App.WeatherViewModel;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            App.WeatherViewModel.reloadWeather();
+            this.DataContext = App.WeatherViewModel;
+            base.OnNavigatedTo(e);
+        }
         private void todopage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("/Todo.xaml", UriKind.Relative));
