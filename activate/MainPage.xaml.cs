@@ -27,7 +27,5 @@ namespace activate
         {
             NavigationService.Navigate(new Uri("/Settings.xaml", UriKind.Relative));
         }
-
     }
-
 }

@@ -37,6 +37,28 @@ namespace activate
                 if (((bool)settings["isCelcius"]) == true)
                 {
                     celcius.IsChecked = true;
+                    return;
+                }
+                else
+                {
+                    fahrenheit.IsChecked = true;
+                    return;
+                }
+            }
+            else
+            {
+                fahrenheit.IsChecked = true;
+                return;
+            }
+        }
+
+        private void updateRadioButton()
+        {
+            if (settings.Contains("isCelcius"))
+            {
+                if (((bool)settings["isCelcius"]) == true)
+                {
+                    celcius.IsChecked = true;
                 }
                 else
                 {
@@ -111,12 +133,40 @@ namespace activate
 
         private void fahrenheit_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (settings.Contains("isCelcius"))
+            {
+                if (((bool)settings["isCelcius"]) == false)
+                {
+                    return;
+                }
+                else
+                {
+                    AddOrUpdateValue("isCelcius", false);
+                }
+            }
+            else
+            {
+                AddOrUpdateValue("isCelcius", false);
+            }
         }
 
         private void celcius_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (settings.Contains("isCelcius"))
+            {
+                if (((bool)settings["isCelcius"]) == true)
+                {
+                    return;
+                }
+                else
+                {
+                    AddOrUpdateValue("isCelcius", true);
+                }
+            }
+            else
+            {
+                AddOrUpdateValue("isCelcius", true);
+            }
         }
     }
 }

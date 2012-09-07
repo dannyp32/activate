@@ -89,6 +89,7 @@ namespace activate.ViewModel
             {
                 linkParameters = "2442047";
             }
+
             if (settings.Contains("isCelcius"))
             {
                 if (((bool)settings["isCelcius"]) == true)
