@@ -64,7 +64,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HelperMethods.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -86,7 +85,7 @@
       <DependentUpon>TodoItems.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToDoViewModel.cs" />
-    <Compile Include="WeatherInfo.cs" />
+    <Compile Include="WeatherData.cs" />
     <Compile Include="WeatherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

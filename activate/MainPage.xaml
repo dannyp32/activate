@@ -35,13 +35,13 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
-<!--
+
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="ForecastListItemTemplate">
-            <StackPanel Orientation="Horizontal" Margin="0, 400, 0, 0" Width="480" Height="100">
+            <StackPanel Orientation="Horizontal" Margin="0" Width="480" Height="100">
                 <StackPanel Width="190" VerticalAlignment="Center">
                     <TextBlock HorizontalAlignment="Center" Text="{Binding Path=DayOfWeek}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ItemDay}" FontFamily="Segoe WP Light" FontSize="36" Foreground="#545d61"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=MonthAndDay}" FontFamily="Segoe WP Light" FontSize="36" Foreground="#545d61"></TextBlock>
                 </StackPanel>
                 <Image Height="100" Width="100" Source="{Binding Path=ImageSource}"></Image>
                 <StackPanel Width="190" VerticalAlignment="Center">
@@ -56,16 +56,10 @@
             </StackPanel>
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
-    -->
+    
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="#e1e4e4">
-    <!--
-        
-        <Grid.Background>
-            <ImageBrush x:Name="bg" ImageSource="images\bg8.png"></ImageBrush>
-        </Grid.Background>
-        -->
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -81,92 +75,23 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, -32, 0, 480">
-                <TextBlock x:Name="weather" Text="" Foreground="#0cbbed" FontSize="232"  FontWeight="Bold" FontFamily="Segoe WP" ></TextBlock>
-                <TextBlock x:Name="dot" Margin="0, 44, 0, 0" Text="°" Foreground="#0cbbed" FontSize="96"  FontWeight="Bold" FontFamily="Segoe WP" ></TextBlock>
+                <TextBlock Text="{Binding MainWeather}" Foreground="#0cbbed" FontSize="232"  FontWeight="Bold" FontFamily="Segoe WP" ></TextBlock>
+                <TextBlock Margin="0, 44, 0, 0" Text="°" Foreground="#0cbbed" FontSize="96"  FontWeight="Bold" FontFamily="Segoe WP" ></TextBlock>
             </StackPanel>
 
             <StackPanel Margin="0, 240, 0, 340" >
-                <TextBlock x:Name="currentCity" HorizontalAlignment="Center" Text="" Foreground="#434849" FontSize="42"  FontFamily="Segoe WP Light" ></TextBlock>
-                <TextBlock x:Name="currentDay" HorizontalAlignment="Center" Text="" Foreground="#757e80" FontSize="36"  FontFamily="Segoe WP Light" ></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding MainCity}" Foreground="#434849" FontSize="42"  FontFamily="Segoe WP Light" ></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding MainDay}" Foreground="#757e80" FontSize="36"  FontFamily="Segoe WP Light" ></TextBlock>
             </StackPanel>
-
-
-
-            <ListBox Name="modernForecast" Margin="0, 380, 0, 80" Width="480" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="0" Width="480" Height="100">
-                            <StackPanel Width="190" VerticalAlignment="Center">
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=dayOfWeek}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=monthAndDay}" FontFamily="Segoe WP Light" FontSize="36" Foreground="#545d61"></TextBlock>
-                            </StackPanel>
-                            <Image Height="100" Width="100" Source="{Binding Path=imageSource}"></Image>
-                            <StackPanel Width="190" VerticalAlignment="Center">
-                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                                    <TextBlock Text="↑" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                                    <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="{Binding Path=high}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#0da5d0"></TextBlock>
-                                    <TextBlock Text="↓" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                                    <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="{Binding Path=low}" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#0da5d0"></TextBlock>
-                                </StackPanel>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Path=condition}" FontFamily="Segoe WP Light" FontSize="24" Foreground="#545d61"></TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <!--
+            
             <ListBox 
             x:Name="WeatherListBox" 
             ItemsSource="{Binding WeatherList}" 
-            Margin="0, 400, 0, 96"
+            Margin="0, 380, 0, 96"
             Width="480"
             ItemTemplate="{StaticResource ForecastListItemTemplate}">
         </ListBox>
--->
-            
-            
-            
-          <!--
-            <StackPanel Orientation="Horizontal" Margin="0, 164, 0, 0" Width="480" Height="100">
-                <StackPanel Width="190" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Center" Text="MON" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Text="Sep 30" FontFamily="Segoe WP Light" FontSize="36" Foreground="#545d61"></TextBlock>
-                </StackPanel>
-                <Image Height="100" Width="100" Source="images/weather/45.png"></Image>
-                <StackPanel Width="190" VerticalAlignment="Center">
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock Text="↑" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                        <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="67°" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#0da5d0"></TextBlock>
-                        <TextBlock Text="↓" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#545d61"></TextBlock>
-                        <TextBlock HorizontalAlignment="Center" Margin="4, 0, 4, 0" Text="56°" FontFamily="Segoe WP" FontWeight="ExtraBold" FontSize="36" Foreground="#0da5d0"></TextBlock>
-                    </StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="Mostly Cloudy" FontFamily="Segoe WP Light" FontSize="24" Foreground="#545d61"></TextBlock>
-                </StackPanel>
-            </StackPanel>
--->
-<!--
-            <ListBox Name="upcomingForecast" Margin="0, 400, 0, 80" Width="480" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="0, 0, 0, 1" BorderBrush="#d0d7d7">
 
-                            <Border BorderThickness="0, 0, 0, 1" BorderBrush="#8a9494" >
-
-                                <StackPanel Orientation="Horizontal" Height="64" Width="480">
-                                    <TextBlock Text="{Binding Path=day_of_week}" Margin="32, 0, 0, 0" Width="100" VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#434849"></TextBlock>
-                                    <Image VerticalAlignment="Center" Width="64" Source="{Binding Path=condition}"></Image>
-                                    <TextBlock Text="{Binding Path=high}" Width="100"  VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#434849"></TextBlock>
--->
-                                    <!--     <TextBlock Text=" / " VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#434849"></TextBlock>  -->
-                               <!--     <TextBlock Text="{Binding Path=low}" Width="100"   VerticalAlignment="Center" FontFamily="Segoe WP" FontSize="32" Foreground="#646c6d"></TextBlock>
-
-                                </StackPanel>
-                            </Border>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-    -->
             <ScrollViewer Margin="0, 622, 0, 0" Height="92" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
                 <StackPanel  Background="Transparent" Orientation="Horizontal" >
 

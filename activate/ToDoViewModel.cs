@@ -22,48 +22,37 @@ namespace activate.ViewModel
             toDoDB = new ToDoDataContext();
         }
 
-        private string _woeid;
-        public string WOEID
-        {
-            get { return _woeid; }
-            set
-            {
-                _woeid = value;
-                NotifyPropertyChanged("WOEID");
-            }
-        }
-
-        private ToDoCategory _activeCategory;
+        private ToDoCategory activeCategory;
         public ToDoCategory ActiveCategory
         {
-            get { return _activeCategory; }
+            get { return activeCategory; }
             set
             {
-                _activeCategory = value;
+                activeCategory = value;
                 NotifyPropertyChanged("ActiveCategory");
             }
         }
 
         // All to-do items.
-        private ObservableCollection<ToDoItem> _allToDoItems;
+        private ObservableCollection<ToDoItem> allToDoItems;
         public ObservableCollection<ToDoItem> AllToDoItems
         {
-            get { return _allToDoItems; }
+            get { return allToDoItems; }
             set
             {
-                _allToDoItems = value;
+                allToDoItems = value;
                 NotifyPropertyChanged("AllToDoItems");
             }
         }
 
         // A list of all categories, used by the add task page.
-        private List<ToDoCategory> _categoriesList;
+        private List<ToDoCategory> categoriesList;
         public List<ToDoCategory> CategoriesList
         {
-            get { return _categoriesList; }
+            get { return categoriesList; }
             set
             {
-                _categoriesList = value;
+                categoriesList = value;
                 NotifyPropertyChanged("CategoriesList");
             }
         }
@@ -86,8 +75,8 @@ namespace activate.ViewModel
             AllToDoItems = new ObservableCollection<ToDoItem>(toDoItemsInDB);
 
             // Specify the query for all categories in the database.
-            var toDoCategoriesInDB = from ToDoCategory category in toDoDB.Categories
-                                     select category;
+            var toDoCategoriesInDB = from ToDoCategory myCategory in toDoDB.Categories
+                                     select myCategory;
 
             // Load a list of all categories.
             CategoriesList = toDoDB.Categories.ToList();
@@ -107,33 +96,6 @@ namespace activate.ViewModel
 
             // Add a to-do item to the "all" observable collection.
             AllToDoItems.Add(newToDoItem);
-
-            /*
-            using (ToDoDataContext ToDoDB = new ToDoDataContext("Data Source=isostore:/ToDo.sdf"))
-            {
-                ToDoCategory newCategory = new ToDoCategory
-                {
-                    Name = CategoryField.Text
-                };
-
-                //check if it already exists by iterating through all
-                IList<ToDoCategory> categories = this.GetCategories();
-                foreach (ToDoCategory todoCateg in categories)
-                {
-                    if (todoCateg.Name.Equals(newCategory.Name))
-                    {
-                        MessageBox.Show("The category already exists");
-                        return;
-                    }
-                }
-
-                ToDoDB.Categories.InsertOnSubmit(newCategory);
-                ToDoDB.SubmitChanges();
-                MessageBox.Show("Your new category has been added successfully!");
-                this.NavigationService.Navigate(new Uri("/Todo.xaml", UriKind.Relative));
-            }
-             * */
-
         }
 
         // Remove a to-do task item from the database and collections.

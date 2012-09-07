@@ -25,34 +25,32 @@ namespace activate
             InitializeSettings();
         }
 
-        private void addWOEID(string woeid)
-        {
-            if(settings.Contains("WOEID"))
-            {
-                settings.Add("WOEID", woeid);
-            }
-        }
-
         private void InitializeSettings()
         {
             if (settings.Contains("WOEID"))
             {
                 WOEIDField.Text = (string)settings["WOEID"];
-                App.ViewModel.WOEID = (string)settings["WOEID"];
             }
+
             if (settings.Contains("isCelcius"))
             {
                 if (((bool)settings["isCelcius"]) == true)
                 {
                     celcius.IsChecked = true;
                 }
+                else
+                {
+                    fahrenheit.IsChecked = true;
+                }
+            }
+            else
+            {
+                fahrenheit.IsChecked = true;
             }
         }
 
-        public bool AddOrUpdateValue(string Key, Object value)
+        public void AddOrUpdateValue(string Key, Object value)
         {
-            bool valueChanged = false;
-
             // If the key exists
             if (settings.Contains(Key))
             {
@@ -61,16 +59,13 @@ namespace activate
                 {
                     // Store the new value
                     settings[Key] = value;
-                    valueChanged = true;
                 }
             }
             // Otherwise create the key.
             else
             {
                 settings.Add(Key, value);
-                valueChanged = true;
             }
-            return valueChanged;
         }
 
         private void findWOEID_Click(object sender, RoutedEventArgs e)
@@ -92,7 +87,7 @@ namespace activate
         {
             if (WOEIDField.Text == string.Empty)
             {
-                MessageBox.Show("Please enter a valid WOEID. To find your WOEID, please click on the \"Find my WOEID\" link.");
+                MessageBox.Show("Please enter a valid WOEID. To find your WOEID, please click on the \"Find my WOEID\" button.");
                 return;
             }
             // If the key exists
@@ -110,8 +105,18 @@ namespace activate
             else
             {
                 settings.Add("WOEID", WOEIDField.Text);
-                MessageBox.Show("Your WOEID: " + settings["WOEID"] + "has been added successfully");
+                MessageBox.Show("Your WOEID " + settings["WOEID"] + "has been added successfully");
             }
+        }
+
+        private void fahrenheit_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void celcius_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

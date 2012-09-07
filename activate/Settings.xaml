@@ -33,8 +33,8 @@
                 <TextBlock Margin="22, 32, 0, 12" Text="Weather Settings" FontFamily="Segoe WP" FontSize="36" Foreground="#0cbbed"/>
                 
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <RadioButton x:Name="fahrenheit" IsChecked="True" Margin="0, 0, 80, 0" Background="#0cbbed" Foreground="#FF556C72" GroupName="tempType">°F</RadioButton>
-                    <RadioButton x:Name="celcius" Background="#0cbbed" Foreground="#FF556C72" GroupName="tempType">°C</RadioButton>
+                    <RadioButton x:Name="fahrenheit" Checked="fahrenheit_Checked" IsChecked="True" Margin="0, 0, 80, 0" Background="#0cbbed" Foreground="#FF556C72" GroupName="tempType">°F</RadioButton>
+                    <RadioButton x:Name="celcius" Checked="celcius_Checked" Background="#0cbbed" Foreground="#FF556C72" GroupName="tempType">°C</RadioButton>
                 </StackPanel>
                 
                 <TextBlock Margin="22, 8, 0, 12" TextWrapping="Wrap" Text="To change your weather forecast location please enter your WOEID" FontFamily="Segoe WP" FontSize="26" Foreground="#FF6D8389"/>
